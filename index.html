@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মানবতার কল্যাণ ব্লগ - অসহায় মানুষের পাশে</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="Trust The Idea Logo.png">
+    <!-- =======================================================
+         [আর্নিং সেটআপ] এখানে আপনার Google AdSense এর মেইন কোডটি বসবে
+         ======================================================= -->
+    <!-- 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;600;700&display=swap');
+        body { font-family: 'Hind Siliguri', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- নেভিগেশন বার -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-100">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" onclick="showSection('home')" class="text-2xl font-bold text-emerald-600 flex items-center gap-2">
+                <i class="fa-solid fa-hand-holding-heart"></i> মানবতার আলো
+            </a>
+            <div class="flex gap-2 md:gap-4">
+                <button onclick="showSection('submit-story')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg text-xs md:text-sm font-bold shadow-sm transition">
+                    <i class="fa-solid fa-pen-to-square mr-1"></i> গল্প লিখুন
+                </button>
+                <button onclick="openAdminModal()" class="bg-slate-800 hover:bg-slate-900 text-white px-3 py-2 rounded-lg text-xs md:text-sm font-bold transition">
+                    <i class="fa-solid fa-user-gear"></i> অ্যাডমিন ড্যাশবোর্ড
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ১. হোমপেজ সেকশন -->
+    <div id="home-section" class="section-page flex-grow">
+        <header class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-12 px-4 text-center shadow-md">
+            <div class="max-w-2xl mx-auto">
+                <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider mb-2 inline-block">১00% অলাভজনক প্ল্যাটফর্ম</span>
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">আপনার একটি ক্লিক, বাঁচাতে পারে একটি প্রাণ</h1>
+                <p class="text-xs md:text-base opacity-95">এখানে সাধারণ মানুষের পাঠানো গল্পগুলো পড়ুন ও শেয়ার করুন। এই সাইটের বিজ্ঞাপনের সমস্ত আয় সরাসরি অসহায় ও দরিদ্র পরিবারের কল্যাণে ব্যয় করা হয়।</p>
+            </div>
+        </header>
+
+        <!-- টপ ব্যানার বিজ্ঞাপন এলাকা -->
+        <div class="container mx-auto px-4 mt-6 text-center">
+            <div class="bg-white p-2 border border-gray-200 rounded-xl inline-block w-full max-w-4xl shadow-sm">
+                <!-- AdSense Top Banner Code Here -->
+                <p class="text-gray-400 text-xs uppercase font-bold">[ গুগল অ্যাডসেন্স - টপ ব্যানার বিজ্ঞাপন ]</p>
+            </div>
+        </div>
+
+        <main class="container mx-auto px-4 py-6 grid lg:grid-cols-3 gap-8">
+            <!-- গল্পের লিস্ট -->
+            <div class="lg:col-span-2 space-y-6" id="public-stories-container">
+                <!-- জাভাস্ক্রিপ্ট এর মাধ্যমে এখানে লাইভ গল্প ও ইন-ফিড বিজ্ঞাপন লোড হবে -->
+            </div>
+            
+            <!-- সাইডবার (বিজ্ঞাপন ও তথ্য) -->
+            <div class="space-y-6">
+                <!-- বড় স্কয়ার বিজ্ঞাপন (আয়ের প্রধান উৎস) -->
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 text-center">
+                    <span class="text-gray-400 text-xs block mb-2">- স্পন্সরড বিজ্ঞাপন -</span>
+                    <div class="bg-slate-50 h-64 rounded-xl flex items-center justify-center border border-dashed border-gray-300">
+                        <!-- AdSense Sidebar Code Here -->
+                        <p class="text-gray-500 text-xs p-4">গুগল অ্যাডসেন্স ডিসপ্লে বিজ্ঞাপন <br> (ভিজিটররা এখানে দেখলেই আয় হবে)</p>
+                    </div>
+                </div>
+
+                <!-- লাইভ ফান্ড কাউন্টার -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md">
+                    <h3 class="text-lg font-bold mb-3 text-emerald-400"><i class="fa-solid fa-chart-line"></i> মানবতার ফান্ড হিসাব</h3>
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="bg-slate-800 p-3 rounded-xl">
+                            <span class="text-xs text-gray-400">এই মাসের আয়</span>
+                            <p class="text-xl font-bold text-emerald-500" id="monthly-earn">$০.০০</p>
+                        </div>
+                        <div class="bg-slate-800 p-3 rounded-xl">
+                            <span class="text-xs text-gray-400">সহায়তা প্রাপ্ত পরিবার</span>
+                            <p class="text-xl font-bold text-emerald-500">১২টি</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-4 leading-relaxed">নোট: গুগল অ্যাডসেন্স থেকে প্রতি মাসের ২১ তারিখে পেমেন্ট রিলিজ হওয়ার পর আয়ের লাইভ স্ক্রিনশট আমাদের ফেসবুক পেজে প্রকাশ করা হয়।</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ২. গল্প জমা দেওয়ার ফর্ম সেকশন -->
+    <div id="submit-story-section" class="section-page hidden flex-grow container mx-auto px-4 py-12 max-w-2xl">
+        <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-100">
+            <h2 class="text-2xl font-bold text-slate-900 mb-2"><i class="fa-solid fa-feather text-emerald-600"></i> অসহায় মানুষের গল্পটি লিখুন</h2>
+            <p class="text-slate-500 text-sm mb-6">আপনার পাঠানো তথ্যটি অ্যাডমিন প্যানেল থেকে যাচাই করে সাইটে পাবলিশ করা হবে। সঠিক মোবাইল নম্বর ও ঠিকানা দিন।</p>
+            
+            <form id="storyForm" onsubmit="submitUserStory(event)">
+                <div class="mb-4">
+                    <label class="block text-slate-700 font-semibold mb-1 text-sm">আপনার নাম/লেখকের নাম</label>
+                    <input type="text" id="authorName" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-emerald-500" placeholder="উদা: আরিফ রহমান">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-slate-700 font-semibold mb-1 text-sm">গল্পের শিরোনাম *</label>
+                    <input type="text" id="storyTitle" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-emerald-500" placeholder="উদা: টাকার অভাবে এতিম শিশু ফাহিমের পড়াশোনা বন্ধের উপক্রম">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-slate-700 font-semibold mb-1 text-sm">বিভাগ *</label>
+                    <select id="storyCategory" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-emerald-500">
+                        <option value="চিকিৎসা সহায়তা">চিকিৎসা সহায়তা</option>
+                        <option value="শিক্ষা তহবিল">শিক্ষা তহবিল</option>
+                        <option value="খাদ্য ও বাসস্থান">খাদ্য ও বাসস্থান</option>
+                        <option value="নারী নির্যাতন">নারী নির্যাতন</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-slate-700 font-semibold mb-1 text-sm">বিস্তারিত বিবরণ (ঠিকানা ও যোগাযোগ সহ) *</label>
+                    <textarea id="storyContent" rows="6" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-emerald-500" placeholder="অসহায় মানুষের বর্তমান অবস্থা এবং তাকে কীভাবে সাহায্য করা যাবে তা বিস্তারিত লিখুন..."></textarea>
+                </div>
+                <div class="flex gap-3">
+                    <button type="submit" class="flex-1 bg-emerald-600 text-white font-bold py-2.5 rounded-lg hover:bg-emerald-700 transition shadow-md">অ্যাপ্রুভালের জন্য পাঠান</button>
+                    <button type="button" onclick="showSection('home')" class="bg-slate-100 text-slate-700 font-bold px-4 py-2.5 rounded-lg hover:bg-slate-200 transition">বাতিল</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ৩. অ্যাডমিন ড্যাশবোর্ড সেকশন -->
+    <div id="admin-dashboard-section" class="section-page hidden flex-grow container mx-auto px-4 py-12">
+        <div class="flex justify-between items-center mb-6 border-b pb-4">
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900">অ্যাডমিন কন্ট্রোল প্যানেল</h2>
+                <p class="text-slate-500 text-sm">এখানে নতুন গল্প রিভিউ করুন। অ্যাপ্রুভ করলে সাথে সাথে সাইটে অ্যাডসেন্স বিজ্ঞাপনের মাঝে গল্পটি লাইভ হবে।</p>
+            </div>
+            <button onclick="showSection('home')" class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg font-bold hover:bg-slate-300 transition">ড্যাশবোর্ড বন্ধ করুন</button>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- পেন্ডিং গল্প -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-amber-100">
+                <h3 class="text-lg font-bold text-amber-600 mb-4 flex items-center gap-2"><i class="fa-solid fa-clock"></i> পেন্ডিং পোস্ট (যাচাই করুন)</h3>
+                <div id="pending-stories-container" class="space-y-4"></div>
+            </div>
+            <!-- পাবলিশড গল্প -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100">
+                <h3 class="text-lg font-bold text-emerald-600 mb-4 flex items-center gap-2"><i class="fa-solid fa-circle-check"></i> লাইভ গল্পসমূহ (সাইটে সচল আছে)</h3>
+                <div id="approved-stories-container" class="space-y-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- অ্যাডমিন লগইন মোডাল -->
+    <div id="adminLoginModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl">
+            <h3 class="text-xl font-bold text-slate-900 mb-4 text-center"><i class="fa-solid fa-lock text-emerald-600"></i> সিকিউর অ্যাডমিন লগইন</h3>
+            <input type="password" id="adminPassword" class="w-full px-4 py-2 border rounded-lg mb-4 text-center tracking-widest focus:outline-none focus:border-emerald-500" placeholder="পাসওয়ার্ড দিন">
+            <div class="flex gap-2">
+                <button onclick="checkAdminPassword()" class="flex-1 bg-slate-900 text-white font-bold py-2 rounded-lg">লগইন</button>
+                <button onclick="closeAdminModal()" class="bg-gray-100 text-gray-700 font-bold px-4 py-2 rounded-lg">বন্ধ করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- আর্নিং স্টিকি ফুটার বিজ্ঞাপন (মোবাইলে সবচেয়ে বেশি আয় দেয় এটি) -->
+    <div class="bg-white shadow-lg border-t border-gray-200 py-2 text-center sticky bottom-0 z-50">
+        <div class="container mx-auto px-4 max-w-xl">
+            <div class="bg-slate-100 p-2 rounded border border-dashed border-slate-400 text-[10px] text-gray-400 font-bold uppercase relative">
+                <span class="absolute -top-2 left-2 bg-slate-400 text-white px-1 rounded text-[8px]">AD</span>
+                এখানে গুগল অ্যাডসেন্স এর ৩২০×৫০ বা রেসপন্সিভ মোবাইল স্টিকি কোড বসবে
+            </div>
+        </div>
+    </div>
+
+    <!-- ফুটার -->
+    <footer class="bg-slate-900 text-slate-500 py-6 text-center text-xs">
+        <img src="1000021942.jpg" width="100px" height="100px" alt="logo", center class="mx-auto mb-4 rounded-full border-2 border-gray-700">
+        <p class="text-gray-300 font-semibold mb-1">মানবতার আলো অর্গানাইজেশন &copy; 2026</p>
+        <p class="opacity-60">অসহায় মানুষের মুখে হাসি ফোটানোর একটি টেকনিক্যাল চ্যারিটি প্রজেক্ট।</p>
+        <br>
+        <p class="text-xs mb-4">যোগাযোগ ইমেইল: mdnazibabrar@gmail.com </p>
+        <p class="text-xs mb-4">মোবাইল:01759493967</p>
+    </footer>
+
+    <!-- ডাটাবেজ এবং লজিক স্ক্রিপ্ট -->
+    <script>
+        // ব্রাউজারের লোকাল ডাটাবেজে (LocalStorage) ডেটা আজীবন সেভ রাখার ব্যবস্থা
+        let database = JSON.parse(localStorage.getItem('charity_blogs')) || [
+            { id: 1, author: "স্বেচ্ছাসেবক", title: "দিনমজুর করিম মিয়ার ঝাপসা চোখ, টাকার অভাবে বন্ধ দৃষ্টির আলো", category: "চিকিৎসা সহায়তা", content: "গত দুই বছর ধরে চোখের ছানি সমস্যায় ভুগছেন পঞ্চাশোর্ধ দিনমজুর করিম মিয়া। এক সময় কায়িক পরিশ্রম করে সংসার চালালেও এখন ঠিকমতো চোখে দেখতে পান না। ডাক্তার জানিয়েছেন দ্রুত অপারেশন না করালে চিরতরে অন্ধ হয়ে যেতে পারেন তিনি। কিন্তু অপারেশনের জন্য প্রয়োজনীয় ১৫ হাজার টাকা জোগাড় করা তার পক্ষে অসম্ভব...", status: "approved", date: "২০ মে, ২০২৬" }
+        ];
+
+        function saveToLocalStorage() {
+            localStorage.setItem('charity_blogs', JSON.stringify(database));
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-page').forEach(page => page.classList.add('hidden'));
+            document.getElementById(`${sectionId}-section`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderStories();
+        }
+
+        function openAdminModal() { document.getElementById('adminLoginModal').classList.remove('hidden'); }
+        function closeAdminModal() { document.getElementById('adminLoginModal').classList.add('hidden'); document.getElementById('adminPassword').value=''; }
+
+        // সিকিউর পাসওয়ার্ড সেট করা হয়েছে: admin786
+        function checkAdminPassword() {
+            if (document.getElementById('adminPassword').value === "admin786") {
+                closeAdminModal();
+                showSection('admin-dashboard');
+            } else {
+                alert("ভুল পাসওয়ার্ড!");
+            }
+        }
+
+        function submitUserStory(e) {
+            e.preventDefault();
+            database.push({
+                id: Date.now(),
+                author: document.getElementById('authorName').value,
+                title: document.getElementById('storyTitle').value,
+                category: document.getElementById('storyCategory').value,
+                content: document.getElementById('storyContent').value,
+                status: "pending",
+                date: new Date().toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' })
+            });
+            saveToLocalStorage();
+            alert("গল্পটি জমা হয়েছে! অ্যাডমিন প্যানেল চেক করে এটি অ্যাপ্রুভ করুন।");
+            document.getElementById('storyForm').reset();
+            showSection('home');
+        }
+
+        function approveStory(id) {
+            const story = database.find(item => item.id === id);
+            if(story) story.status = "approved";
+            saveToLocalStorage();
+            renderStories();
+        }
+
+        function deleteStory(id) {
+            if(confirm("গল্পটি মুছে ফেলতে চান?")) {
+                database = database.filter(item => item.id !== id);
+                saveToLocalStorage();
+                renderStories();
+            }
+        }
+
+        function renderStories() {
+            const publicContainer = document.getElementById('public-stories-container');
+            const pendingContainer = document.getElementById('pending-stories-container');
+            const approvedContainer = document.getElementById('approved-stories-container');
+
+            publicContainer.innerHTML = ''; pendingContainer.innerHTML = ''; approvedContainer.innerHTML = '';
+            let approvedCount = 0;
+
+            // ফেসবুক শেয়ারিং ফাংশন
+        function shareOnFacebook(url) {
+            // বর্তমান ওয়েবসাইটের লাইভ লিংকটি নিয়ে ফেসবুকের শেয়ার উইন্ডো ওপেন করবে
+            const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            window.open(facebookShareUrl, '_blank', 'width=600,height=400');
+}
+
+
+            database.forEach(story => {
+                let badgeColor = story.category === "চিকিৎসা সহায়তা" ? "bg-red-50 text-red-600" : story.category === "শিক্ষা তহবিল" ? "bg-blue-50 text-blue-600" : "bg-emerald-50 text-emerald-600";
+                
+                if (story.status === "approved") {
+                    approvedCount++;
+                    publicContainer.innerHTML += `
+                        <article class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition">
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <span class="${badgeColor} px-2 py-0.5 rounded font-bold">${story.category}</span>
+                                <span>• ${story.date}</span>
+                                <span>• লেখক: ${story.author}</span>
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-slate-950 mb-3 hover:text-emerald-600 cursor-pointer">${story.title}</h3>
+                            <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-4">${story.content}</p>
+                            <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                                <span><i class="fa-regular fa-eye"></i> ১.৫K বার পড়া হয়েছে</span>
+                                <!-- নতুন সচল কোড -->
+                                <span onclick="shareOnFacebook('${window.location.href}')" class="text-emerald-600 font-bold cursor-pointer hover:text-emerald-700 transition flex items-center gap-1">
+                                    ফেসবুকে শেয়ার করুন <i class="fa-solid fa-share-nodes"></i>
+                                </span>
+                            
+                                
+                            </div>
+                        </article>
+                    `;
+
+                    // আর্নিং ট্রিক: প্রতি ১টি পোস্টের পর একটি কাস্টম ইন-ফিড অ্যাডসেন্স ব্লক অটোমেটিক জেনারেট হবে
+                    if(approvedCount % 2 === 1) {
+                        publicContainer.innerHTML += `
+                            <div class="bg-emerald-50/40 border border-dashed border-emerald-300 p-6 rounded-2xl text-center my-4 relative">
+                                <span class="absolute top-1 left-2 text-[9px] text-emerald-600 font-bold">SPONSORED AD</span>
+                                <p class="text-gray-500 text-xs font-semibold">[ গুগল অ্যাডসেন্স ইন-ফিড আর্নিং বিজ্ঞাপন কোড এখানে বসবে ]</p>
+                            </div>
+                        `;
+                    }
+                }
+
+                if (story.status === "pending") {
+                    pendingContainer.innerHTML += `
+                        <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-100 space-y-2">
+                            <span class="text-xs font-bold text-slate-500">লেখক: ${story.author} | ${story.date}</span>
+                            <h4 class="font-bold text-slate-900">${story.title}</h4>
+                            <p class="text-xs text-slate-600 line-clamp-2">${story.content}</p>
+                            <div class="flex gap-2 pt-2">
+                                <button onclick="approveStory(${story.id})" class="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded hover:bg-emerald-700 transition"><i class="fa-solid fa-check"></i> অ্যাপ্রুভ (Live) করুন</button>
+                                <button onclick="deleteStory(${story.id})" class="bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded hover:bg-red-600 transition"><i class="fa-solid fa-trash"></i> ডিলিট</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                if (story.status === "approved") {
+                    approvedContainer.innerHTML += `
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 flex justify-between items-center">
+                            <h4 class="font-bold text-slate-900 text-xs truncate max-w-[70%]">${story.title}</h4>
+                            <button onclick="deleteStory(${story.id})" class="text-red-500 hover:text-red-700 text-xs font-bold"><i class="fa-solid fa-trash"></i> মুছুন</button>
+                        </div>
+                    `;
+                }
+            });
+
+            // লোকাল ডাটাবেজে আয়ের একটি ডেমো হিসাব দেখানোর জন্য
+            document.getElementById('monthly-earn').innerText = `$${(approvedCount * 4.25).toFixed(2)}`;
+        }
+
+        renderStories();
+    </script>
+</body>
+</html>
